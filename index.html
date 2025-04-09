@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Myanmar Archaeology Rapid Assessment</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -14,6 +12,7 @@
     <style>
         body {
             font-family: 'Noto Sans Myanmar', sans-serif;
+            scroll-behavior: smooth;
         }
         .hero-section {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1599403275295-57bca684efd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
@@ -43,188 +42,147 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-        .nav-link {
-            font-weight: 500;
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
         }
-        .footer-link {
-            text-decoration: none;
-        }
-        .footer-link:hover {
-            text-decoration: underline;
-        }
-        .btn-primary-custom {
-            background-color: #0d6efd;
-            color: white;
-        }
-        .btn-warning-custom {
-            background-color: #ffc107;
-            color: black;
-        }
-        .btn-purple-custom {
-            background-color: #6f42c1;
-            color: white;
-        }
-        .btn-dark-custom {
-            background-color: #212529;
-            color: white;
-        }
-        .btn-lg-custom {
-            padding: 0.5rem 1.5rem;
-            font-size: 1.25rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-        }
-        .btn-sm-custom {
-            padding: 0.375rem 0.75rem;
-            font-size: 0.875rem;
-            border-radius: 0.375rem;
-            font-weight: 600;
+        .mobile-menu.open {
+            max-height: 500px;
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-50">
     <!-- Header/Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="./img/maa_logo.png" alt="MAA Logo" height="40">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-
-                        <a class="nav-link" href="#download">Download</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#privacy">Privacy Policy</a>
-                    </li>
-                </ul>
+    <header class="bg-gray-900 sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" class="flex items-center">
+                    <img src="./img/maa_logo.png" alt="MAA Logo" class="h-10">
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-white hover:text-yellow-400 font-medium">Home</a>
+                    <a href="#download" class="text-white hover:text-yellow-400 font-medium">Download</a>
+                    <a href="#contact" class="text-white hover:text-yellow-400 font-medium">Contact</a>
+                    <a href="#privacy" class="text-white hover:text-yellow-400 font-medium">Privacy Policy</a>
+                </nav>
+                
+                <!-- Mobile menu button -->
+                <button id="mobileMenuButton" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="mobile-menu md:hidden">
+                <div class="flex flex-col space-y-3 mt-4">
+                    <a href="#" class="text-white hover:text-yellow-400 font-medium py-2">Home</a>
+                    <a href="#download" class="text-white hover:text-yellow-400 font-medium py-2">Download</a>
+                    <a href="#contact" class="text-white hover:text-yellow-400 font-medium py-2">Contact</a>
+                    <a href="#privacy" class="text-white hover:text-yellow-400 font-medium py-2">Privacy Policy</a>
+                </div>
             </div>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="container text-center py-5">
-            <h1 class="display-4 fw-bold mb-3">မြန်မာနိုင်ငံရှေးဟောင်းသုတေသန</h1>
-            <h2 class="display-4 fw-bold mb-3">အမြန်ဆန်းစစ်ချက်</h2>
-            <h2 class="display-4 fw-bold mb-4">Myanmar Archaeology Rapid Assessment</h2>
-            <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
-                <a href="#download" class="btn btn-warning-custom btn-lg-custom px-4 fw-bold">
-                    <i class="fas fa-download me-2"></i> Download
+        <div class="container mx-auto px-4 py-5 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-3">မြန်မာနိုင်ငံရှေးဟောင်းသုတေသန</h1>
+            <h2 class="text-4xl md:text-5xl font-bold mb-3">အမြန်ဆန်းစစ်ချက်</h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Myanmar Archaeology Rapid Assessment</h2>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#download" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-lg flex items-center justify-center transition duration-300">
+                    <i class="fas fa-download mr-2"></i> Download
                 </a>
-                <a href="#contact" class="btn btn-warning-custom btn-lg-custom px-4 fw-bold">
-                    <i class="fas fa-envelope me-2"></i> Contact Us
+                <a href="#contact" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-lg flex items-center justify-center transition duration-300">
+                    <i class="fas fa-envelope mr-2"></i> Contact Us
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Main Content -->
-    <main class="container my-5">
+    <main class="container mx-auto px-4 my-8">
         <!-- Download Section -->
-        <section id="download" class="py-5">
-            <h2 class="text-center mb-5 fw-bold">Download Options</h2>
-            <div class="row g-4">
+        <section id="download" class="py-8">
+            <h2 class="text-3xl font-bold text-center mb-8">Download Options</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- APK Download -->
-                <div class="col-md-4">
-                    <div class="card download-card shadow-sm h-100">
-                        <div class="card-body text-center p-4">
-                            <div class="text-warning mb-4">
-                                <i class="fab fa-android fa-4x"></i>
-                            </div>
-                            <h3 class="card-title h4 fw-bold mb-3">Direct APK Download</h3>
-                            <p class="card-text mb-4">For Android devices (5.0+)</p>
-                            <a href="./downloads/MAA-Collect-release.apk" class="btn btn-warning btn-sm fw-bold">
-                                <i class="fas fa-download me-2"></i> Download APK (v2025)
-                            </a>
-                            <p class="mt-3 text-muted small">File size: 11.5 MB</p>
+                <div class="download-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg">
+                    <div class="p-6 text-center">
+                        <div class="text-yellow-500 mb-6">
+                            <i class="fab fa-android text-5xl"></i>
                         </div>
+                        <h3 class="text-xl font-bold mb-3">Direct APK Download</h3>
+                        <p class="text-gray-600 mb-4">For Android devices (5.0+)</p>
+                        <a href="./downloads/MAA-Collect-release.apk" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded transition duration-300">
+                            <i class="fas fa-download mr-2"></i> Download APK (v2025)
+                        </a>
+                        <p class="mt-3 text-gray-500 text-sm">File size: 11.5 MB</p>
                     </div>
                 </div>
                 
                 <!-- Play Store -->
-                <div class="col-md-4">
-                    <div class="card download-card shadow-sm h-100">
-                        <div class="card-body text-center p-4">
-                            <div class="text-primary mb-4">
-                                <i class="fab fa-google-play fa-4x"></i>
-                            </div>
-                            <h3 class="card-title h4 fw-bold mb-3">Google Play Store</h3>
-                            <p class="card-text mb-4">For automatic updates</p>
-                            <a href="https://play.google.com/store/apps/details?id=org.maa.collect.android" class="btn btn-primary btn-sm fw-bold text-white">
-                                <i class="fab fa-google-play me-2"></i> Get on Play Store
-                            </a>
-                            <p class="mt-3 text-muted small">Requires Android 6.0+</p>
+                <div class="download-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg">
+                    <div class="p-6 text-center">
+                        <div class="text-blue-500 mb-6">
+                            <i class="fab fa-google-play text-5xl"></i>
                         </div>
+                        <h3 class="text-xl font-bold mb-3">Google Play Store</h3>
+                        <p class="text-gray-600 mb-4">For automatic updates</p>
+                        <a href="https://play.google.com/store/apps/details?id=org.maa.collect.android" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300">
+                            <i class="fab fa-google-play mr-2"></i> Get on Play Store
+                        </a>
+                        <p class="mt-3 text-gray-500 text-sm">Requires Android 6.0+</p>
                     </div>
                 </div>
                 
                 <!-- Web App -->
-                <div class="col-md-4">
-                    <div class="card download-card shadow-sm h-100">
-                        <div class="card-body text-center p-4">
-                            <div class="text-purple mb-4">
-                                <i class="fas fa-globe fa-4x"></i>
-                            </div>
-                            <h3 class="card-title h4 fw-bold mb-3">Web Version</h3>
-                            <p class="card-text mb-4">Use directly in browser</p>
-                            <a href="https://ee.myanmararchaeology.org/x/UeqHXapo" class="btn btn-purple-custom btn-sm-custom">
-                                <i class="fas fa-external-link-alt me-2"></i> Open Web App
-                            </a>
-                            <p class="mt-3 text-muted small">Works on all devices</p>
+                <div class="download-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg">
+                    <div class="p-6 text-center">
+                        <div class="text-purple-500 mb-6">
+                            <i class="fas fa-globe text-5xl"></i>
                         </div>
+                        <h3 class="text-xl font-bold mb-3">Web Version</h3>
+                        <p class="text-gray-600 mb-4">Use directly in browser</p>
+                        <a href="https://ee.myanmararchaeology.org/x/UeqHXapo" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition duration-300">
+                            <i class="fas fa-external-link-alt mr-2"></i> Open Web App
+                        </a>
+                        <p class="mt-3 text-gray-500 text-sm">Works on all devices</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact Form Section -->
-        <section id="contact" class="py-5 border-top">
-            <h2 class="text-center mb-5 fw-bold">Contact Us</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">                  
-                    <div class="row mt-4 g-3">
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-body text-center">
-                                    <div class="text-warning mb-3">
-                                        <i class="fas fa-envelope fa-2x"></i>
-                                    </div>
-                                    <h3 class="h5 fw-bold">Email</h3>
-                                    <p class="small">saw@myanmararchaeology.org</p>
-                                </div>
+        <section id="contact" class="py-8 border-t border-gray-200 mt-8">
+            <h2 class="text-3xl font-bold text-center mb-8">Contact Us</h2>
+            <div class="flex justify-center">
+                <div class="w-full max-w-4xl">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                            <div class="text-yellow-500 mb-4">
+                                <i class="fas fa-envelope text-3xl"></i>
                             </div>
+                            <h3 class="text-lg font-bold mb-2">Email</h3>
+                            <p class="text-gray-600">saw@myanmararchaeology.org</p>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-body text-center">
-                                    <div class="text-warning mb-3">
-                                        <i class="fas fa-phone-alt fa-2x"></i>
-                                    </div>
-                                    <h3 class="h5 fw-bold">Phone</h3>
-                                    <p class="small">+95 1 234 5678</p>
-                                </div>
+                        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                            <div class="text-yellow-500 mb-4">
+                                <i class="fas fa-phone-alt text-3xl"></i>
                             </div>
+                            <h3 class="text-lg font-bold mb-2">Phone</h3>
+                            <p class="text-gray-600">+95 1 234 5678</p>
                         </div>
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <div class="card-body text-center">
-                                    <div class="text-warning mb-3">
-                                        <i class="fas fa-map-marker-alt fa-2x"></i>
-                                    </div>
-                                    <h3 class="h5 fw-bold">Address</h3>
-                                    <p class="small">Naypyidaw, Myanmar</p>
-                                </div>
+                        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                            <div class="text-yellow-500 mb-4">
+                                <i class="fas fa-map-marker-alt text-3xl"></i>
                             </div>
+                            <h3 class="text-lg font-bold mb-2">Address</h3>
+                            <p class="text-gray-600">Naypyidaw, Myanmar</p>
                         </div>
                     </div>
                 </div>
@@ -232,68 +190,114 @@
         </section>
 
         <!-- Privacy Policy Section -->
-        <section id="privacy" class="py-5 border-top">
-            <h2 class="text-center mb-5 fw-bold">Privacy Policy</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="card shadow-sm">
-                        <div class="card-body p-4">
-                            <div class="mb-5">
-                                <h3 class="h4 fw-bold mb-3">1. Information We Collect</h3>
-                                <p class="mb-3">We collect minimal data necessary for the operation of our application and website:</p>
-                                <ul class="list-group list-group-flush mb-3">
-                                    <li class="list-group-item"><i class="fas fa-circle small me-2"></i> Basic usage statistics (non-personal)</li>
-                                    <li class="list-group-item"><i class="fas fa-circle small me-2"></i> Archaeological site documentation data</li>
-                                    <li class="list-group-item"><i class="fas fa-circle small me-2"></i> GPS coordinates (with adjustable precision)</li>
-                                    <li class="list-group-item"><i class="fas fa-circle small me-2"></i> Contact information you provide voluntarily</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="mb-5">
-                                <h3 class="h4 fw-bold mb-3">2. How We Use Your Data</h3>
-                                <p class="mb-3">All collected data is used exclusively for:</p>
-                                <ul class="list-group list-group-flush mb-3">
-                                    <li class="list-group-item"><i class="fas fa-circle small me-2"></i> Cultural heritage documentation and protection</li>
-                                    <li class="list-group-item"><i class="fas fa-circle small me-2"></i> Application improvement and maintenance</li>
-                                    <li class="list-group-item"><i class="fas fa-circle small me-2"></i> Responding to user inquiries</li>
-                                    <li class="list-group-item"><i class="fas fa-circle small me-2"></i> Academic research (aggregated data only)</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="mb-5">
-                                <h3 class="h4 fw-bold mb-3">3. Data Protection</h3>
-                                <p class="mb-3">We implement strong security measures:</p>
-                                <ul class="list-group list-group-flush mb-3">
-                                    <li class="list-group-item"><i class="fas fa-circle small me-2"></i> End-to-end encryption for all sensitive data</li>
-                                    <li class="list-group-item"><i class="fas fa-circle small me-2"></i> Secure offline storage on devices</li>
-                                    <li class="list-group-item"><i class="fas fa-circle small me-2"></i> Regular security audits</li>
-                                    <li class="list-group-item"><i class="fas fa-circle small me-2"></i> No sharing with third parties without consent</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="mb-4">
-                                <h3 class="h4 fw-bold mb-3">4. Your Rights</h3>
-                                <p class="mb-3">You have the right to:</p>
-                                <ul class="list-group list-group-flush mb-3">
-                                    <li class="list-group-item"><i class="fas fa-circle small me-2"></i> Access your collected data</li>
-                                    <li class="list-group-item"><i class="fas fa-circle small me-2"></i> Request deletion of your data</li>
-                                    <li class="list-group-item"><i class="fas fa-circle small me-2"></i> Export your data in standard formats</li>
-                                    <li class="list-group-item"><i class="fas fa-circle small me-2"></i> Adjust location precision settings</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="text-center mt-5">
-                                <div class="d-flex flex-wrap justify-content-center gap-3">
-                                    <a href="./downloads/Application-policy-Burmese.pdf" target="_blank" class="btn btn-warning-custom btn-sm-custom">
-                                        <i class="fas fa-file-pdf me-2"></i> Application Policy (Burmese)
-                                    </a>
-                                    <a href="./downloads/MAA-Application-guideline-Burmese.pdf" target="_blank" class="btn btn-warning-custom btn-sm-custom">
-                                        <i class="fas fa-file-pdf me-2"></i> Application Guideline (Burmese)
-                                    </a>
-                                    <a href="./downloads/Safety-Protocol-Burmese.pdf" target="_blank" class="btn btn-warning-custom btn-sm-custom">
-                                        <i class="fas fa-file-pdf me-2"></i> Safety Protocol (Burmese)
-                                    </a>
-                                </div>
+        <section id="privacy" class="py-8 border-t border-gray-200 mt-8">
+            <h2 class="text-3xl font-bold text-center mb-8">Privacy Policy</h2>
+            <div class="flex justify-center">
+                <div class="w-full max-w-5xl">
+                    <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold mb-4">1. Information We Collect</h3>
+                            <p class="mb-4">We collect minimal data necessary for the operation of our application and website:</p>
+                            <ul class="space-y-2 pl-5">
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs mt-1.5 mr-2 text-yellow-500"></i>
+                                    <span>Basic usage statistics (non-personal)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs mt-1.5 mr-2 text-yellow-500"></i>
+                                    <span>Archaeological site documentation data</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs mt-1.5 mr-2 text-yellow-500"></i>
+                                    <span>GPS coordinates (with adjustable precision)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs mt-1.5 mr-2 text-yellow-500"></i>
+                                    <span>Contact information you provide voluntarily</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold mb-4">2. How We Use Your Data</h3>
+                            <p class="mb-4">All collected data is used exclusively for:</p>
+                            <ul class="space-y-2 pl-5">
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs mt-1.5 mr-2 text-yellow-500"></i>
+                                    <span>Cultural heritage documentation and protection</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs mt-1.5 mr-2 text-yellow-500"></i>
+                                    <span>Application improvement and maintenance</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs mt-1.5 mr-2 text-yellow-500"></i>
+                                    <span>Responding to user inquiries</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs mt-1.5 mr-2 text-yellow-500"></i>
+                                    <span>Academic research (aggregated data only)</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold mb-4">3. Data Protection</h3>
+                            <p class="mb-4">We implement strong security measures:</p>
+                            <ul class="space-y-2 pl-5">
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs mt-1.5 mr-2 text-yellow-500"></i>
+                                    <span>End-to-end encryption for all sensitive data</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs mt-1.5 mr-2 text-yellow-500"></i>
+                                    <span>Secure offline storage on devices</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs mt-1.5 mr-2 text-yellow-500"></i>
+                                    <span>Regular security audits</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs mt-1.5 mr-2 text-yellow-500"></i>
+                                    <span>No sharing with third parties without consent</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-bold mb-4">4. Your Rights</h3>
+                            <p class="mb-4">You have the right to:</p>
+                            <ul class="space-y-2 pl-5">
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs mt-1.5 mr-2 text-yellow-500"></i>
+                                    <span>Access your collected data</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs mt-1.5 mr-2 text-yellow-500"></i>
+                                    <span>Request deletion of your data</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs mt-1.5 mr-2 text-yellow-500"></i>
+                                    <span>Export your data in standard formats</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs mt-1.5 mr-2 text-yellow-500"></i>
+                                    <span>Adjust location precision settings</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="text-center mt-8">
+                            <div class="flex flex-wrap justify-center gap-3">
+                                <a href="./downloads/Application-policy-Burmese.pdf" target="_blank" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded inline-flex items-center transition duration-300">
+                                    <i class="fas fa-file-pdf mr-2"></i> Application Policy (Burmese)
+                                </a>
+                                <a href="./downloads/MAA-Application-guideline-Burmese.pdf" target="_blank" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded inline-flex items-center transition duration-300">
+                                    <i class="fas fa-file-pdf mr-2"></i> Application Guideline (Burmese)
+                                </a>
+                                <a href="./downloads/Safety-Protocol-Burmese.pdf" target="_blank" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded inline-flex items-center transition duration-300">
+                                    <i class="fas fa-file-pdf mr-2"></i> Safety Protocol (Burmese)
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -303,59 +307,75 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h3 class="h4 fw-bold mb-3 text-warning">Myanmar Archaeology</h3>
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-yellow-400">Myanmar Archaeology</h3>
                     <p class="mb-4">Documenting and preserving Myanmar's cultural heritage.</p>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-yellow-400 transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="hover:text-yellow-400 transition duration-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="hover:text-yellow-400 transition duration-300"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
-                    <h3 class="h5 fw-bold mb-3 text-warning">Links</h3>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#download" class="footer-link text-white">Download</a></li>
-                        <li class="mb-2"><a href="#contact" class="footer-link text-white">Contact</a></li>
-                        <li class="mb-2"><a href="#privacy" class="footer-link text-white">Privacy</a></li>
+                <div>
+                    <h3 class="text-lg font-bold mb-4 text-yellow-400">Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#download" class="hover:text-yellow-400 transition duration-300">Download</a></li>
+                        <li><a href="#contact" class="hover:text-yellow-400 transition duration-300">Contact</a></li>
+                        <li><a href="#privacy" class="hover:text-yellow-400 transition duration-300">Privacy</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
-                    <h3 class="h5 fw-bold mb-3 text-warning">Resources</h3>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="footer-link text-white">Documentation</a></li>
-                        <li class="mb-2"><a href="#" class="footer-link text-white">API</a></li>
-                        <li class="mb-2"><a href="#" class="footer-link text-white">GitHub</a></li>
+                <div>
+                    <h3 class="text-lg font-bold mb-4 text-yellow-400">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-yellow-400 transition duration-300">Documentation</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition duration-300">API</a></li>
+                        <li><a href="#" class="hover:text-yellow-400 transition duration-300">GitHub</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-4 col-md-4">
-                    <h3 class="h5 fw-bold mb-3 text-warning">Newsletter</h3>
+                <div>
+                    <h3 class="text-lg font-bold mb-4 text-yellow-400">Newsletter</h3>
                     <form>
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="Your email" aria-label="Your email">
-                            <button class="btn btn-warning-custom" type="button">Subscribe</button>
+                        <div class="flex">
+                            <input type="email" class="flex-grow px-4 py-2 rounded-l focus:outline-none text-gray-800" placeholder="Your email">
+                            <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-4 py-2 rounded-r transition duration-300">
+                                Subscribe
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
-            <hr class="my-4">
+            <hr class="border-gray-700 my-6">
             <div class="text-center">
-                <p class="mb-0">&copy; 2023 Myanmar Archaeology Assessment. All rights reserved.</p>
-                <p class="small text-muted mt-2">Version 1.2.0 | Last updated: October 2023</p>
+                <p>&copy; 2023 Myanmar Archaeology Assessment. All rights reserved.</p>
+                <p class="text-gray-500 text-sm mt-2">Version 1.2.0 | Last updated: October 2023</p>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap 5 JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script>
-        // Smooth scrolling for anchor links
+        // Mobile menu toggle
+        document.getElementById('mobileMenuButton').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('open');
+            this.innerHTML = menu.classList.contains('open') 
+                ? '<i class="fas fa-times text-2xl"></i>' 
+                : '<i class="fas fa-bars text-2xl"></i>';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobileMenu').classList.remove('open');
+                document.getElementById('mobileMenuButton').innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+            });
+        });
+
+        // Smooth scrolling for all anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
@@ -370,51 +390,47 @@
             });
         });
 
-        // Contact form handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            const submitText = document.getElementById('submitText');
-            const submitSpinner = document.getElementById('submitSpinner');
-            const successMessage = document.getElementById('successMessage');
-            const errorMessage = document.getElementById('errorMessage');
-            
-            // Show loading state
-            submitText.textContent = 'Sending...';
-            submitSpinner.classList.remove('d-none');
-            submitBtn.disabled = true;
-            
-            // Hide previous messages
-            successMessage.classList.add('d-none');
-            errorMessage.classList.add('d-none');
-            
-            // Simulate form submission (replace with actual AJAX call)
-            setTimeout(() => {
-                // For demo purposes, we'll assume success
-                // In real implementation, handle the AJAX response
-                submitText.textContent = 'Send Message';
-                submitSpinner.classList.add('d-none');
-                submitBtn.disabled = false;
+        // Form submission handling
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
                 
-                // Show success message
-                successMessage.classList.remove('d-none');
+                const submitBtn = document.getElementById('submitBtn');
+                const submitText = document.getElementById('submitText');
+                const submitSpinner = document.getElementById('submitSpinner');
+                const successMessage = document.getElementById('successMessage');
+                const errorMessage = document.getElementById('errorMessage');
                 
-                // Reset form
-                e.target.reset();
+                // Show loading state
+                submitText.textContent = 'Sending...';
+                submitSpinner.classList.remove('hidden');
+                submitBtn.disabled = true;
                 
-                // Hide success message after 5 seconds
+                // Hide previous messages
+                successMessage.classList.add('hidden');
+                errorMessage.classList.add('hidden');
+                
+                // Simulate form submission (replace with actual fetch call)
                 setTimeout(() => {
-                    successMessage.classList.add('d-none');
-                }, 5000);
-            }, 1500);
-        });
-
-        // Initialize tooltips
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-        });
+                    // For demo purposes, we'll assume success
+                    submitText.textContent = 'Send Message';
+                    submitSpinner.classList.add('hidden');
+                    submitBtn.disabled = false;
+                    
+                    // Show success message
+                    successMessage.classList.remove('hidden');
+                    
+                    // Reset form
+                    e.target.reset();
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.classList.add('hidden');
+                    }, 5000);
+                }, 1500);
+            });
+        }
     </script>
 <p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=kokoye2007/myanarch" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
 </html>
